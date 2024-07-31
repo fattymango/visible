@@ -27,7 +27,7 @@ func main() {
 
 res,err := visible.CleanStruct(user, "admin")
 if err != nil {
-    log.Fatal(err)
+    panic(err)
 }
 fmt.Println(res)
 }
@@ -35,7 +35,7 @@ fmt.Println(res)
 
 res,err := visible.CleanStruct(user, "user")
 if err != nil {
-    log.Fatal(err)
+    panic(err)
 }
 fmt.Println(res)
 }
