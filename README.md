@@ -8,38 +8,39 @@ go get github.com/fattymango/visible
 
 ## Examples
 ```go
-import "github.com/fattymango/visible"
+import (
+	"fmt"
+
+	"github.com/fattymango/visible"
+)
 
 type User struct {
-    ID int `json:"id"`
-    Name string `json:"name"`
-    AdminData interface{} `json:"admin_data" visible:"admin"`
+	ID        int         `json:"id"`
+	Name      string      `json:"name"`
+	AdminData interface{} `json:"admin_data" visible:"admin"`
 }
-
-
 
 func main() {
-   user := User{
-    ID: 1,
-    Name: "John Doe",
-    AdminData: "Admin Data",
-}
+	user := User{
+		ID:        1,
+		Name:      "John Doe",
+		AdminData: "Admin Data",
+	}
 
-res,err := visible.CleanStruct(user, "admin")
-if err != nil {
-    panic(err)
-}
-fmt.Println(res)
-}
-// Output: {id:1 name:John Doe admin_data:Admin Data}
+	res, err := visible.CleanStruct(user, "admin")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(res)
+	// Output: {id:1 name:John Doe admin_data:Admin Data}
 
-res,err := visible.CleanStruct(user, "user")
-if err != nil {
-    panic(err)
+	res, err = visible.CleanStruct(user, "user")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(res)
+	// Output: {id:1 name:John Doe}
 }
-fmt.Println(res)
-}
-// Output: {id:1 name:John Doe}
 
 ```
 
